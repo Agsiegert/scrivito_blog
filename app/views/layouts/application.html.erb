@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ScrivitoBlog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= scrivito_head_tags %>
-</head>
-<body>
+  <head>
+    <title>ScrivitoBlog</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= scrivito_head_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to 'Home', scrivito_path(Obj.root), class: "navbar-brand" %>
+        </div>
 
-<%= yield %>
+        <%= scrivito_tag_list :ul, Obj.root, :toclist, class: "nav navbar-nav" do |list, page| %>
+          <%= list.tag :li do %>
+            <%= link_to page.display_title, scrivito_path(page) %>
+          <% end %>
+        <% end %>
+      </div>
+    </nav>
 
-<%= scrivito_body_tags %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-</body>
+    <%= scrivito_body_tags %>
+
+  </body>
 </html>
