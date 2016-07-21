@@ -49,3 +49,4 @@ gem "dotenv-rails", :groups => [:development, :test]
 gem 'scrivito'
 gem "bootstrap-sass", "~> 3.3.5"
 gem "rails_12factor", group: :production
+gem 'pg'
